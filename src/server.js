@@ -3,12 +3,12 @@ import mongoose from 'mongoose';
 import Todos from './dbTodos.js';
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 
 app.use(express.json());
 
-const mongo_uri = 'mongodb://root:example@localhost:27017/todos?authSource=admin';
+const mongo_uri = 'mongodb://root:example@mongo/todos?authSource=admin';
 
 mongoose.connect(mongo_uri, {
     useCreateIndex: true,
