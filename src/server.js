@@ -10,18 +10,18 @@ app.use(express.json());
 
 const mongo_uri = 'mongodb://root:example@localhost:27017/todos?authSource=admin';
 
-mongoose.connect(mongo_uri,{
+mongoose.connect(mongo_uri, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
-app.get("/",(req,res)=> res.status(200).send("Hello World"));
+app.get("/", (req, res) => res.status(200).send("Hello World"));
 
-app.post("/api/v1/todos/news",(req,res)=>{
+app.post("/api/v1/todos/news", (req, res) => {
     const dbTodos = req.body
 
-    Todos.create(dbTodos,(err,data)=>{
+    Todos.create(dbTodos, (err, data) => {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -30,8 +30,8 @@ app.post("/api/v1/todos/news",(req,res)=>{
     });
 });
 
-app.get('/api/v1/todos',(req,res)=>{
-    Todos.find((err,data)=>{
+app.get('/api/v1/todos', (req, res) => {
+    Todos.find((err, data) => {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -40,6 +40,6 @@ app.get('/api/v1/todos',(req,res)=>{
     })
 });
 
-app.listen(port,()=> console.log(`Listening on localhost:${port}`));
+app.listen(port, () => console.log(`Listening on localhost:${port}`));
 
 
